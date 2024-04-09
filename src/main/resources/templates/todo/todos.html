@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="fragments :: head(~{::title})">
+    <title>Todos Page</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <div class="d-flex justify-content-end mb-3">
+                <a sec:authorize="hasRole('ADMIN')" href="auth/admin/users" class="btn btn-primary me-2">Users</a>
+                <a href="/auth/logout" class="btn btn-danger">Logout</a>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col"><a href="/todos/new" class="btn btn-success">Add Todo</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="todo : ${todos}" th:object="${todo}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{title}"></td>
+                    <td th:text="*{priority}"></td>
+                    <td th:text="*{createdAt}"></td>
+                    <td>
+                        <a th:href="@{/todos/{id}/edit(id=*{id})}" class="btn btn-warning">Update</a>
+                        <a th:href="@{/todos/{id}/delete(id=*{id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<section th:replace="fragments :: js"></section>
+</body>
+</html>

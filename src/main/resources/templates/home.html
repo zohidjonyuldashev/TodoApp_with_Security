@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(~{::title})">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="container">
+    <div class="row custom-container d-flex justify-content-center align-items-center" style="height: 80vh">
+        <div class="col-md-4 text-center">
+            <h1 class="display-4 mb-4">Welcome to Todo App</h1>
+            <div class="d-grid gap-2">
+                <a href="/auth/register" class="btn btn-lg btn-primary mb-3">Register</a>
+                <a href="/auth/login" class="btn btn-lg btn-success">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+<section th:replace="fragments :: js"></section>
+</body>
+</html>

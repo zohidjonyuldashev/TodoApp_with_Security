@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(~{::title})">
+    <title>Users Page</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <div class="d-flex justify-content-end mb-3">
+                <a href="/todos" class="btn btn-warning me-2">Back</a>
+                <a href="/auth/logout" class="btn btn-danger">Logout</a>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Account Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}" th:object="${user}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{username}"></td>
+                    <td th:text="*{password}"></td>
+                    <td th:if="*{accountNonLocked}">
+                        <a th:href="@{/auth/admin/users/{id}/block(id=*{id})}" class="btn btn-success">Open</a>
+                    </td>
+                    <td th:unless="*{accountNonLocked}">
+                        <a th:href="@{/auth/admin/users/{id}/unblock(id=*{id})}" class="btn btn-danger">Locked</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<section th:replace="fragments :: js"></section>
+</body>
+</html>
