@@ -1,4 +1,4 @@
-package uz.developer.Daos.auth;
+package uz.developer.daos.auth;
 
 import lombok.NonNull;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

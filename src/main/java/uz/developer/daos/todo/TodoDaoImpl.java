@@ -1,4 +1,4 @@
-package uz.developer.Daos.todo;
+package uz.developer.daos.todo;
 
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

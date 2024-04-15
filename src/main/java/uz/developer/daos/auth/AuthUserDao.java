@@ -1,4 +1,4 @@
-package uz.developer.Daos.auth;
+package uz.developer.daos.auth;
 
 import uz.developer.models.AuthUser;
 

@@ -1,4 +1,4 @@
-package uz.developer.config;
+package uz.developer.config.mvc;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

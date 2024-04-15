@@ -1,4 +1,4 @@
-package uz.developer.Daos.todo;
+package uz.developer.daos.todo;
 
 import uz.developer.models.Todo;
 

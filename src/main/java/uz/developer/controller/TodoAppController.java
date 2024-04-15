@@ -1,7 +1,6 @@
 package uz.developer.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import uz.developer.config.security.CustomUserDetails;
 import uz.developer.services.TodoService;
-import uz.developer.Daos.auth.AuthUserDao;
-import uz.developer.Daos.todo.TodoDao;
+import uz.developer.daos.auth.AuthUserDao;
+import uz.developer.daos.todo.TodoDao;
 import uz.developer.models.AuthUser;
 import uz.developer.models.Todo;
 

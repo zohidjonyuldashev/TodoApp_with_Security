@@ -4,8 +4,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import uz.developer.Daos.auth.AuthRoleDao;
-import uz.developer.Daos.auth.AuthUserDao;
+import uz.developer.daos.auth.AuthRoleDao;
+import uz.developer.daos.auth.AuthUserDao;
 import uz.developer.models.AuthRole;
 import uz.developer.models.AuthUser;
 

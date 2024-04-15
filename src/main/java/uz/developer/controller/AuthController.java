@@ -1,13 +1,14 @@
 package uz.developer.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import uz.developer.Daos.auth.AuthUserDao;
-import uz.developer.config.dto.UserRegisterDTO;
+import uz.developer.daos.auth.AuthUserDao;
+import uz.developer.dto.UserRegisterDTO;
 import uz.developer.models.AuthUser;
 
 import java.util.List;
@@ -24,28 +25,24 @@ public class AuthController {
     }
 
     @GetMapping("/register")
-    public String registerPage() {
+    public String registerPage(Model model) {
+        model.addAttribute("dto", new UserRegisterDTO());
         return "auth/register";
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute UserRegisterDTO dto, RedirectAttributes redirectAttributes) {
-        if (dto.username() == null || dto.username().isEmpty()) {
-            redirectAttributes.addFlashAttribute("error", "Username cannot be empty");
-            return "redirect:/auth/register";
-        }
-
-        if (authUserDao.existsByUsername(dto.username())) {
-            redirectAttributes.addFlashAttribute("error", "Username already exists");
-            return "redirect:/auth/register";
+    public String register(@Valid @ModelAttribute("dto") UserRegisterDTO dto, BindingResult errors) {
+        if (errors.hasErrors()) {
+            return "auth/register";
         }
 
         AuthUser authUser = AuthUser.builder()
-                .username(dto.username())
-                .password(passwordEncoder.encode(dto.password()))
+                .username(dto.getUsername())
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .build();
 
-        authUserDao.save(authUser);
+        Long saved = authUserDao.save(authUser);
+        authUserDao.setRole(saved);
         return "redirect:/auth/login";
     }
 

@@ -3,7 +3,7 @@ package uz.developer.config.security;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import uz.developer.Daos.auth.AuthUserDao;
+import uz.developer.daos.auth.AuthUserDao;
 import uz.developer.models.AuthUser;
 
 import java.util.Collection;

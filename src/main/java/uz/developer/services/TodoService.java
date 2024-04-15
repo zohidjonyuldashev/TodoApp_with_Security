@@ -3,8 +3,8 @@ package uz.developer.services;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import uz.developer.Daos.auth.AuthUserDao;
-import uz.developer.Daos.todo.TodoDao;
+import uz.developer.daos.auth.AuthUserDao;
+import uz.developer.daos.todo.TodoDao;
 import uz.developer.models.AuthUser;
 import uz.developer.models.Todo;
 
